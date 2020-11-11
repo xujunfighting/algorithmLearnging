@@ -1,0 +1,83 @@
+{
+  "centerId": 3203,
+  "centerName": "泰州转运中心",
+  "countAvg": 6,
+  "countList": [
+    {
+      "countTime": "2018-11-13 14:00:00",
+      "countTotal": 7577
+    },
+    {
+      "countTime": "2018-11-13 15:00:00",
+      "countTotal": 16231
+    },
+    {
+      "countTime": "2018-11-13 16:00:00",
+      "countTotal": 14162
+    },
+    {
+      "countTime": "2018-11-13 17:00:00",
+      "countTotal": 11903
+    },
+    {
+      "countTime": "2018-11-13 18:00:00",
+      "countTotal": 561
+    },
+    {
+      "countTime": "2018-11-13 19:00:00",
+      "countTotal": 12307
+    },
+    {
+      "countTime": "2018-11-13 20:00:00",
+      "countTotal": 14282
+    },
+    {
+      "countTime": "2018-11-14 01:00:00",
+      "countTotal": 172
+    },
+    {
+      "countTime": "2018-11-14 02:00:00",
+      "countTotal": 10683
+    },
+    {
+      "countTime": "2018-11-14 03:00:00",
+      "countTotal": 13247
+    },
+    {
+      "countTime": "2018-11-14 04:00:00",
+      "countTotal": 11372
+    },
+    {
+      "countTime": "2018-11-14 05:00:00",
+      "countTotal": 12713
+    },
+    {
+      "countTime": "2018-11-14 06:00:00",
+      "countTotal": 11730
+    },
+    {
+      "countTime": "2018-11-14 07:00:00",
+      "countTotal": 5657
+    },
+    {
+      "countTime": "2018-11-14 08:00:00",
+      "countTotal": 6302
+    },
+    {
+      "countTime": "2018-11-14 09:00:00",
+      "countTotal": 12558
+    },
+    {
+      "countTime": "2018-11-14 10:00:00",
+      "countTotal": 12582
+    },
+    {
+      "countTime": "2018-11-14 11:00:00",
+      "countTotal": 11671
+    },
+    {
+      "countTime": "2018-11-14 12:00:00",
+      "countTotal": 10767
+    }
+  ]
+}
