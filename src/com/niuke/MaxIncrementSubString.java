@@ -1,5 +1,6 @@
 package com.niuke;
 
+import java.awt.geom.Line2D;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,9 +12,11 @@ import java.util.stream.Collectors;
  * @Date 2020/10/17
  */
 public class MaxIncrementSubString {
+    private static LinkedList<List<Integer>> lists=new LinkedList<>();
+    private static List<Integer> list=new ArrayList<>();
     public static void main(String[] args) {
        int[] res=new int[]{2,1,5,3,6,4,8,9,7};
-       int[] result=getResult2(res);
+       int[] result=getResult3(res);
         System.out.println(result);
     }
     public static int[] getResult1(int[] res){
@@ -77,5 +80,22 @@ public class MaxIncrementSubString {
              result[i++]=value.getValue();
          }
          return result;
+    }
+    public static int[] getResult3(int[] array){
+        list.add(array[0]);
+        lists.add(new ArrayList<>(list));
+        for(int i=1;i<array.length;i++){
+            List<Integer> first = lists.getFirst();
+            Integer start = first.get(first.size() - 1);
+            if(start>array[i]){
+                List temp=new ArrayList();
+                temp.add(array[i]);
+                lists.addFirst(temp);
+            }else{
+                first.add(array[i]);
+            }
+        }
+        System.out.println(lists);
+        return null;
     }
 }
