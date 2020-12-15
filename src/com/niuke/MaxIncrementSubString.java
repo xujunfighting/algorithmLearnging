@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
  */
 public class MaxIncrementSubString {
     public static void main(String[] args) {
-       int[] res=new int[]{2,1,5,3,6,4,8,9,7};
-       int[] result=getResult2(res);
+       int[] res=new int[]{2,1,5,3,6,4,8,9,7,10};
+       int[] result=getMaxIncrementSubString(res);
         System.out.println(result);
     }
     public static int[] getResult1(int[] res){
@@ -75,6 +75,25 @@ public class MaxIncrementSubString {
          int i=0;
          for(Map.Entry<Integer,Integer> value:maps.entrySet()){
              result[i++]=value.getValue();
+         }
+         return result;
+    }
+    public static int[] getMaxIncrementSubString(int[] test){
+         List<Integer> lists=new ArrayList<>();
+
+         int[] result=new int[10];
+         int startValue=test[0];
+         lists.add(startValue);
+         for(int i=1;i<test.length;i++){
+             if(lists.get(lists.size()-1)<test[i]){//当前元素大于前继元素
+                 lists.add(test[i]);
+             }else{//当前元素小于前继元素
+               if(!lists.isEmpty()) {
+                   lists.remove(lists.size() - 1);//移除最后一个元素
+               }
+               startValue=test[i];
+               lists.add(startValue);
+             }
          }
          return result;
     }
