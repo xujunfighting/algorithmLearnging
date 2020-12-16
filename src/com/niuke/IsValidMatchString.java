@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class IsValidMatchString {
     public static void main(String[] args) {
-        boolean valid = isValid("())");
+        boolean valid = isValid("()()");
         System.out.println(valid);
 
     }
