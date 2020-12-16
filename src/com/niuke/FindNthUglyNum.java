@@ -4,9 +4,22 @@ import java.util.HashMap;
 
 public class FindNthUglyNum {
     public static void main(String[] args) {
-        int result = getResult2(7);
+        long start=System.currentTimeMillis();
+        int result = getResult3(1000);
+        long end = System.currentTimeMillis();
+        System.out.println("执行时长为:"+(end-start)+"ms");
+
+//        long start=System.currentTimeMillis();
+//        int[] test=new int[1000];
+//        for(int i=0;i<test.length;i++){
+//            test[i]=i+1;
+//        }
+//        boolean find = isFind(test, test.length-1, 10);
+//        long end = System.currentTimeMillis();
+//        System.out.println("执行时长为:"+(end-start)+"ms");
+//        System.out.println(find);
         System.out.println(result);
-    }
+   }
     public static int getResult1(int num){
         int[] indexs=new int[num];
         indexs[0]=1;
@@ -41,6 +54,7 @@ public class FindNthUglyNum {
             while(!isGet){
                 start++;
                 if((start%2==0&&m.containsKey(start/2))||(start%3==0&&m.containsKey(start/3))||(start%5==0&&m.containsKey(start/5))){
+
                     indexs[i]=start;
                     isGet=true;
                     m.put(start,start);
@@ -48,5 +62,48 @@ public class FindNthUglyNum {
             }
         }
         return indexs[num-1];
+    }
+    public static int getResult3(int num){
+        int[] indexs=new int[num];
+        indexs[0]=1;
+        int start=1;
+        for(int i=1;i<num;i++){
+            boolean isGet=false;
+            while(!isGet){
+                start++;
+                if((start%2==0&&isFind(indexs,i-1,start/2))||(start%3==0&&isFind(indexs,i-1,start/3))||(start%5==0&&isFind(indexs,i-1,start/5))){
+                    //System.out.println("查找到的结果为:"+start);
+                    indexs[i]=start;
+                    isGet=true;
+                }
+            }
+        }
+        return indexs[num-1];
+    }
+    private static boolean isFind(int[] indexs,int end,int target){
+        long startTime=System.currentTimeMillis();
+        int start=0;
+        if(indexs[start]==target){
+            return true;
+        }
+        if(indexs[end]==target){
+            return true;
+        }
+        while(start<end){
+            int middle=(start+end)/2;
+            if(indexs[middle]==target){
+                return true;
+            }else if(indexs[middle]>target){
+                end=middle-1;
+            }else if(indexs[middle]<target){
+                start=middle+1;
+            }
+        }
+        if(start==end&&indexs[start]==target){
+            return true;
+        }
+        long endTime=System.currentTimeMillis();
+       //System.out.println("单次执行时长为:"+(endTime-startTime)+"ms");
+        return false;
     }
 }
