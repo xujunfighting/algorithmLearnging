@@ -7,7 +7,7 @@ public class FindNthUglyNum {
         long start=System.currentTimeMillis();
         int result = getResult3(1000);
         long end = System.currentTimeMillis();
-        System.out.println("执行时长为:"+(end-start)+"ms");
+//        System.out.println("执行时长为:"+(end-start)+"ms");
 
 //        long start=System.currentTimeMillis();
 //        int[] test=new int[1000];
@@ -16,7 +16,7 @@ public class FindNthUglyNum {
 //        }
 //        boolean find = isFind(test, test.length-1, 10);
 //        long end = System.currentTimeMillis();
-//        System.out.println("执行时长为:"+(end-start)+"ms");
+        System.out.println("执行时长为:"+(end-start)+"ms");
 //        System.out.println(find);
         System.out.println(result);
    }
@@ -86,9 +86,6 @@ public class FindNthUglyNum {
         if(indexs[start]==target){
             return true;
         }
-        if(indexs[end]==target){
-            return true;
-        }
         while(start<end){
             int middle=(start+end)/2;
             if(indexs[middle]==target){
@@ -103,7 +100,7 @@ public class FindNthUglyNum {
             return true;
         }
         long endTime=System.currentTimeMillis();
-       //System.out.println("单次执行时长为:"+(endTime-startTime)+"ms");
+//        System.out.println("单次执行时长为:"+(endTime-startTime)+"ms");
         return false;
     }
 }
