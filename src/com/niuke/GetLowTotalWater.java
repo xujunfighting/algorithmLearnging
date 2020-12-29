@@ -9,7 +9,7 @@ package com.niuke;
  */
 public class GetLowTotalWater {
     public static void main(String[] args) {
-       int[] res=new int[]{100,1,1,2,2};
+       int[] res=new int[]{1000000000,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2};
         int result = getResult(res);
         System.out.println(result);
     }
@@ -20,8 +20,11 @@ public class GetLowTotalWater {
       }
       int start=res[0];//以最左端为第一个桶的低位
       int end=res.length-1;//最右端最后一个桶的低位
-      while(res[end-1]>=res[end]){//查找第一个可以使用的末尾节点
+      while(end-1>=0&&res[end-1]>=res[end]){//查找第一个可以使用的末尾节点
           end--;
+      }
+      if(res==null||res.length==1||res.length==2){
+            return result;
       }
       int temp=0;
       int count=0;//数据补偿
