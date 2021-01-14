@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class MinMoney {
     public static void main(String[] args) {
          int[] res=new int[]{1,2,5,4};
-        int result = getResult(res, 10);
+        int result = getResult(res, 11);
         System.out.println(result);
     }
     public static  int getResult(int[] res,int target){
