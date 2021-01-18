@@ -9,7 +9,7 @@ package com.niuke;
  */
 public class GetLowTotalWater {
     public static void main(String[] args) {
-       int[] res=new int[]{1000000000,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2};
+       int[] res=new int[]{1000000000,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2};
         int result = getResult(res);
         System.out.println(result);
     }
