@@ -12,10 +12,8 @@ public class FindTotalIslands {
     public static int startX=0;
     public static int startY=0;
     public static int result=0;
-    public static int maxX=0;
-    public static int maxY=0;
     public static void main(String[] args) {
-       int[][] res=new int[][]{{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1}};
+       int[][] res=new int[][]{{1,1,1,1,1},{0,0,0,0,0},{1,1,1,1,1},{0,0,0,0,0},{1,1,1,0,1}};
         temp=new int[res.length][res[0].length];
         getNum(res);
         System.out.println(result);
@@ -23,7 +21,9 @@ public class FindTotalIslands {
     public static void getNum(int[][] res){
        for(int i=0;i<res.length;i++){
            for(int j=0;j<res[0].length;j++){
-               if((i==0||j==0)&&res[i][j]==1&&temp[i][j]==0) {//第一个不为0的节点
+               if((i==0||j==0)&&res[i][j]==1&&temp[i][j]==0) {//第一个不为0的节点且没有被访问过
+                   startX=i;
+                   startY=j;
                    getResult(res, startX, startY);
                }else if(i>=1&&j>=1&&temp[i][j]==0&&res[i-1][j-1]!=1&&res[i-1][j]!=1&&res[i][j-1]!=1&&res[i][j]==1){
                    startX=i;
@@ -44,23 +44,29 @@ public class FindTotalIslands {
             }
             return result;
         }
-        if(res[curX][curY]==1&&curX+1<res.length){
+        if(res[curX][curY]==1&&curX+1<res.length&&temp[curX+1][curY]==0){
             curX++;
-            temp[curX][curY]=1;//记录节点是否访问过
+            temp[curX][curY]=1;//标识当前节点已经访问过
             getResult(res,curX,curY);
             curX--;
         }
-        if(res[curX][curY]==1&&curY+1<res[0].length){
+        if(res[curX][curY]==1&&curY+1<res[0].length&&temp[curX][curY+1]==0){
             curY++;
-            temp[curX][curY]=1;//记录节点是否访问过
+            temp[curX][curY]=1;//标识当前节点已经访问过
             getResult(res,curX,curY);
             curY--;
         }
-        if(curX>maxX) {
-            maxX = curX + 1;
+        if(curX-1>=0&&res[curX][curY]==1&&temp[curX-1][curY]==0){
+            curX--;
+            temp[curX][curY]=1;//标识当前节点已经访问过
+            getResult(res,curX,curY);
+            curX++;
         }
-        if(curY>maxY) {
-            maxY = curY + 1;
+        if(curY-1>=0&&res[curX][curY]==1&&temp[curX][curY-1]==0){
+           curY--;
+           temp[curX][curY]=1;//标识当前节点已经访问过
+            getResult(res,curX,curY);
+            curY++;
         }
         return result;
     }
