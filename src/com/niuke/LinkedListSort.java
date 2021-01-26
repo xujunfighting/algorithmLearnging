@@ -3,6 +3,10 @@ package com.niuke;
 import com.sun.crypto.provider.PBEWithMD5AndDESCipher;
 import com.zto.algorithm.ListNode;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @Description
  * @Author xujun
@@ -23,8 +27,7 @@ public class LinkedListSort {
         node3.next=node4;
         node4.next=node5;
         node5.next=node6;
-        node4.next=null;
-        ListNode listNode = sortMethod(node1);
+        ListNode listNode = getSortedMethod(node1);
         print(listNode);
 
     }
@@ -67,5 +70,21 @@ public class LinkedListSort {
             System.out.print(head.val+" ");
             head=head.next;
         }
+    }
+    public static ListNode getSortedMethod(ListNode node){
+        List<Integer> lists=new ArrayList<>();
+        while(node!=null){
+            lists.add(node.val);
+            node=node.next;
+        }
+        Collections.sort(lists);
+        ListNode head=new ListNode(0);
+        ListNode cur=head;
+        for(int i:lists){
+            ListNode n=new ListNode(i);
+            cur.next=n;
+            cur=n;
+        }
+        return head.next;
     }
 }
