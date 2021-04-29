@@ -1,10 +1,9 @@
 package com.niuke;
 
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
-
+import java.util.Stack;
 /**
  * @Description
+ * 查找当前元素后面第一个大于当前元素的值
  * @Author xujun
  * @Version V1.0.0
  * @Since 1.0
@@ -13,38 +12,36 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class FindFirstBiggerData {
     public static void main(String[] args) {
         int[] arrays=new int[]{4,3,4,2,1,5,6,7,3,8};
-        getResult(arrays);
+        int[] res=getResult(arrays);
+        System.out.println(res);
     }
-    public static int[] getResult(int[] arrays){
-        int[] result=new int[arrays.length];
-        for(int i=0;i<result.length;i++){
-            result[i]=-1;
+    public static int[] getResult(int[] args){
+        int[] ints=new int[args.length];
+        for(int i=0;i<ints.length;i++){
+            ints[i]=-1;
         }
-        Queue<Integer> queue=new ArrayBlockingQueue<>(result.length);
+        Stack<Integer> stack=new Stack<>();
+        /**
+         * 添加第一个元素
+         */
+        stack.add(0);
+        /**
+         * 当前遍历的元素位置
+         */
         int index=1;
-        int i=0;
-        while(i<arrays.length-1){
-            System.out.println(i);
-            if(queue.isEmpty()) {
-                while (index < arrays.length && arrays[i] >= arrays[index]) {
-                    if(arrays[i]>arrays[index]) {
-                        queue.add(arrays[index]);
-                    }
-                    index++;
-                }
-                result[i]=arrays[index];
-                i++;
-            }else{
 
-                while(!queue.isEmpty()&&queue.peek()<=arrays[i]){
-                    queue.poll();
-                }
-                if(!queue.isEmpty()) {
-                    result[i] = queue.poll();
-                    i++;
-                }
+        while(index<args.length){
+            /**
+             * 查找的后继元素大于当前需要遍历的元素值
+             */
+            while(!stack.isEmpty()&& args[index]>args[stack.peek()]){
+                ints[stack.pop()]=args[index];
             }
+            /**
+             * 栈顶元素不小于当前遍历元素直接压栈
+             */
+            stack.add(index++);
         }
-        return result;
+        return ints;
     }
 }
