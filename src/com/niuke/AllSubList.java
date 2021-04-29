@@ -18,8 +18,8 @@ public class AllSubList {
     static ArrayList<Integer> list=new ArrayList<>();
     public static void main(String[] args) {
         int[] res=new int[]{1,2,3,4,5};
-        //getResult2(res,2);
-        getResult(res,0);
+        getResult2(res,2);
+        //getResult(res,0);
         Collections.sort(lists, new Comparator<ArrayList<Integer>>() {
             @Override
             public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
@@ -43,7 +43,9 @@ public class AllSubList {
         }
         list.add(res[start]);
         start++;
+        //添加当前元素
         getResult(res,start);
+        //移除当前元素
         list.remove(list.size()-1);
         getResult(res,start);
         start--;
