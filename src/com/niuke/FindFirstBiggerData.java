@@ -17,12 +17,15 @@ public class FindFirstBiggerData {
     }
     public static int[] getResult(int[] args){
         int[] ints=new int[args.length];
+        /**
+         * 最后一个元素不存在后续元素直接填写-1
+         */
         for(int i=0;i<ints.length;i++){
             ints[i]=-1;
         }
         Stack<Integer> stack=new Stack<>();
         /**
-         * 添加第一个元素
+         * 添加第一个元素的角标
          */
         stack.add(0);
         /**
@@ -33,12 +36,14 @@ public class FindFirstBiggerData {
         while(index<args.length){
             /**
              * 查找的后继元素大于当前需要遍历的元素值
+             * 如果存在一直出栈直到条件匹配失败或者栈元素为空
              */
             while(!stack.isEmpty()&& args[index]>args[stack.peek()]){
                 ints[stack.pop()]=args[index];
             }
             /**
-             * 栈顶元素不小于当前遍历元素直接压栈
+             * 栈顶元素不小于当前遍历元素直接压栈元素角标
+             * 当前遍历元素角标直接压栈
              */
             stack.add(index++);
         }
