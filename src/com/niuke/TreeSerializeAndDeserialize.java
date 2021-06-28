@@ -43,6 +43,9 @@ public class TreeSerializeAndDeserialize {
         queue.add(root);
         while (!queue.isEmpty()){
             TreeNode node=queue.poll();
+            /**
+             * Queue不允许存储空节点 使用-100标识空节点
+             */
             if(node.val!=-100) {
                 lists.add(node.val);
                 index++;
@@ -59,8 +62,14 @@ public class TreeSerializeAndDeserialize {
                     queue.add(new TreeNode(-100));
                 }
             }else if(node.val==-100&&cur!=0){
+                /**
+                 * 节点为空 但是当前层级还有后续节点不是空节点
+                 */
                 lists.add(null);
             }else{
+                /**
+                 * cur=0 标识当前层级节点数为空 直接退出循环
+                 */
                 break;
             }
             if(index==cur){
