@@ -1,4 +1,4 @@
-package com.niuke;
+package com.niuke.array;
 
 /**
  * @Description
@@ -9,8 +9,12 @@ package com.niuke;
  */
 public class GetLowTotalWater {
     public static void main(String[] args) {
-       int[] res=new int[]{1000000000,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2};
-        int result = getResult(res);
+        //[1,8,6,2,5,4,8,3,7]
+        //1,8,100,2,100,4,8,3,7
+        //[6,4,3,1,4,6,99,62,1,2,6]
+        //[1,1000,1000,6,2,5,4,8,3,7]
+       int[] res=new int[]{6,4,3,1,4,6,99,62,1,2,6};
+        int result = getResultEnhance(res);
         System.out.println(result);
     }
     public  static int getResult(int[] res){
@@ -46,5 +50,31 @@ public class GetLowTotalWater {
           i++;
       }
       return result;
+    }
+
+    /**
+     *查找左右两个节点保证形成的矩形盛水最多
+     */
+    public  static int getResultEnhance(int[] res){
+        int result=0;
+        if(res==null||res.length==1){
+            return result;
+        }
+        int start=0;
+        int end=res.length-1;
+
+        while(start<end){
+            result=Math.max(result,Math.min(res[start],res[end])*(end-start));
+            /**
+             * 将左右指针进行收缩 选择两者之间较小的值进行内缩
+             * 向内收缩长度减小的同时 只有竖板的高度变高才能保证盛水的体积变大
+             */
+            if(res[start]>res[end]){
+                end--;
+            }else{
+                start++;
+            }
+        }
+        return result;
     }
 }
