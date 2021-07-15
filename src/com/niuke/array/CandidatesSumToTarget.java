@@ -29,6 +29,9 @@ public class CandidatesSumToTarget {
             return lists;
         }
         for(int i=start;i<nums.length;i++){
+            /**
+             * 元素为有序数组 如果目标值减去当前值小于零 后续的值肯定也是小于零 直接跳出当前循环
+             */
             if(target-nums[i]<0){
                 return lists;
             }
