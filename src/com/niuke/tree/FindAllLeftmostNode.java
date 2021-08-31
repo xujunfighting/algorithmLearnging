@@ -26,6 +26,10 @@ public class FindAllLeftmostNode {
         n6.left=n7;
         n6.right=n8;
         n8.left=n9;
+        /**
+         * 改进可以先遍历二叉树获取树的深度 就可以知道具体数组需要填充多少个元素了
+         * 但是带来的开销是需要遍历整个二叉树获取深度值
+         */
         for(int i=0;i<200;i++){
             results.add(0);
         }
