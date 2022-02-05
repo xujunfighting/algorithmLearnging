@@ -10,7 +10,7 @@ package com.leetcode;
 public class MoneyChoose {
     public static void main(String[] args) {
          int[] numbers=new int[]{2,3,5};
-        int result = getResult(numbers, 6);
+        int result = getResult(numbers, 2);
         System.out.println(result);
     }
     public static int getResult(int[] numbers,int sum){

@@ -12,7 +12,7 @@ import java.util.List;
  **/
 public class IntegerToRomanData {
     public static void main(String[] args) {
-        String result = getResult(4);
+        String result = getResult(35);
         System.out.println(result);
 
     }
